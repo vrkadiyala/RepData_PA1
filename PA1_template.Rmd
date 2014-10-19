@@ -18,7 +18,7 @@ activity$date <- as.Date(activity$date, format = '%Y-%m-%d')
 
 ### plotting histogram of total number of steps taken each day
 
-```{r echo =FALSE}
+```{r echo =TRUE}
 steps_taken_per_day <- aggregate(steps~date, data =activity, sum )
 head(steps_taken_per_day)
 names(steps_taken_per_day)
@@ -36,7 +36,7 @@ median(steps_taken_per_day$steps, na.rm=TRUE)
 
 1. Make a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
 
-```{r}
+```{r echo=TRUE}
 steps_interval <- aggregate(steps~interval, activity, mean)
 names(steps_interval)
 qplot(interval, steps, data = steps_interval, geom="line", xlab = "Interval", ylab ="average steps taken")
@@ -72,7 +72,7 @@ activity <- activity_merge[,c(1:3)]
 ```
 4.1 Make a histogram of the total number of steps taken each day 
 
-```{r echo =FALSE}
+```{r echo =TRUE}
 steps_taken_per_day <- aggregate(steps~date, data =activity, sum )
 names(steps_taken_per_day)
 head(steps_taken_per_day)
@@ -109,7 +109,7 @@ head(activity)
 ```
 2. Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). The plot should look something like the following, which was creating using simulated data:
 
-```{r echo=FALSE}
+```{r echo=TRUE}
 
 qplot(x=interval, y=steps,data=subset(activity, complete.cases(activity)),geom='smooth', stat='summary', fun.y=mean) + facet_grid(dayType~.) + facet_wrap(~dayType,nrow=2) + theme(strip.background = element_rect(fill="#ffe5cc")) + labs(title=' Average steps per days, analyzing weekdays and weekend patterns')
 ```
